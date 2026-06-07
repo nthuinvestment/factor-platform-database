@@ -1,0 +1,16 @@
+{
+  "factor": "PB_low",
+  "display_name": "低股價淨值比（PB）",
+  "category": "Value",
+  "rebalance": "M",
+  "universe": "Top200 ex-fin (由 pool 決定)",
+  "holding_rule": "以『上月 prev_m = m-1』的 PB 橫切面，在『上月的 TopN 宇宙（pool[prev_m]）』內排序；（你在 export_returns.py 用 pe_low_signal 套到 pb_ratio 上）若 require_positive=True 則只保留 PB>0；取 PB 最低的 bottom_frac=30%；於『本月 m』整月等權持有",
+  "params": {
+    "bottom_frac": 0.3,
+    "require_positive": true,
+    "source_func": "pe_low_signal (applied to pb_ratio)",
+    "decision_month": "m-1",
+    "holding_month": "m"
+  },
+  "timing_notes": "同 PE_low：上月指標決定本月持有；避免前視"
+}

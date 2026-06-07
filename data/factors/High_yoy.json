@@ -1,0 +1,19 @@
+{
+  "factor": "High_yoy",
+  "display_name": "高盈餘年增率",
+  "category": "Growth",
+  "rebalance": "M",
+  "universe": "Top200 (你修正為用 pool[m])",
+  "holding_rule": "以『prev_m = m-2』的 YoY 橫切面排序（yoy_is_percent=True 會先 /100）；並剔除超過 yoy_cap_ratio 的極端值（預設 200%）；在『本月 m 的 TopN 宇宙（pool[m]）』內取 YoY 最高的 top_frac=30%；於『本月 m』整月等權持有",
+  "params": {
+    "top_frac": 0.3,
+    "yoy_cap_ratio": 200,
+    "yoy_is_percent": true,
+    "require_positive": false,
+    "decision_month": "m-2 (YoY data month)",
+    "holding_month": "m",
+    "universe_key_used": "pool[m]",
+    "source_func": "yoy_high_signal"
+  },
+  "timing_notes": "yoy_high_signal 目前用『兩個月前 prev_m=m-2 的 YoY』決定『本月 m 持有』；且宇宙使用 pool[m]（你註記為關鍵修正）"
+}

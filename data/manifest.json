@@ -1,0 +1,30 @@
+{
+  "factors": [
+    "Top200",
+    "Momentum_01",
+    "Momentum_03",
+    "Momentum_06",
+    "PE_low",
+    "PB_low",
+    "Low_beta",
+    "High_yield",
+    "High_yoy",
+    "Margin_growth",
+    "EPS_growth",
+    "TWA00"
+  ],
+  "has_detail": [
+    "Top200",
+    "Momentum_01",
+    "Momentum_03",
+    "Momentum_06",
+    "PE_low",
+    "PB_low",
+    "Low_beta",
+    "High_yield",
+    "High_yoy",
+    "Margin_growth",
+    "EPS_growth"
+  ],
+  "generated_at": "2026-06-05 15:35:34"
+}

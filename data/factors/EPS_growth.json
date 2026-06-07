@@ -1,0 +1,20 @@
+{
+  "factor": "EPS_growth",
+  "display_name": "EPS 預估成長",
+  "category": "Growth",
+  "rebalance": "M",
+  "universe": "Top200 (用 pool[m])",
+  "holding_rule": "針對持有月 m：取觀察月 t=m-1 與前一月 t-1=m-2 的 EPS 預估值比較；若 increase_strict=True 則要求 EPS[t] > EPS[t-1]（否則 EPS[t] >= EPS[t-1]）；若 require_positive=True 則要求兩期 EPS 均 > 0；符合者於『本月 m』整月等權持有",
+  "params": {
+    "increase_strict": true,
+    "require_positive": true,
+    "decision_months_used": [
+      "m-1",
+      "m-2"
+    ],
+    "holding_month": "m",
+    "universe_key_used": "pool[m]",
+    "source_func": "eps_growth_signal"
+  },
+  "timing_notes": "eps_growth_signal 用 (m-1) 與 (m-2) 的 EPS 預估決定 m 月持有；避免前視需確保 eps_est 為當時可得的預估快照"
+}

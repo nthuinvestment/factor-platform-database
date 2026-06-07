@@ -1,0 +1,14 @@
+{
+  "factor": "Top200",
+  "display_name": "Top200 市值池",
+  "category": "Universe",
+  "rebalance": "M",
+  "universe": "Top200",
+  "holding_rule": "以當月市值排序取前 200 檔，作為『下個月』投資宇宙；持有月內等權持有該宇宙",
+  "params": {
+    "top_n": 200,
+    "source_func": "build_sample_pool / pool_to_alpha",
+    "timing": "pool[ym+1] = TopN(mktcap at ym)"
+  },
+  "timing_notes": "你在 build_sample_pool 明確用『當月市值→下月宇宙』，因此宇宙決策不前視；pool_to_alpha 會把 pool[m] 標記到 (m+1) 月交易日"
+}

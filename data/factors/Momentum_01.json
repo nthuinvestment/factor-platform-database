@@ -1,0 +1,15 @@
+{
+  "factor": "Momentum_01",
+  "display_name": "動能（回看 1 個月）",
+  "category": "Momentum",
+  "rebalance": "M",
+  "universe": "Top200",
+  "holding_rule": "在『當月 m』的 Top200 宇宙內，計算『回看 1 個月（含當月）』日報酬的幾何累積報酬；選取報酬排名前 30% 的股票，並只保留累積報酬 > 0；於『下個月 m+1』整月等權持有",
+  "params": {
+    "top_frac": 0.3,
+    "lookback_months": 1,
+    "require_positive_momentum": true,
+    "source_func": "momentum_signal"
+  },
+  "timing_notes": "momentum_signal 以『當月 m 的資料』決定『下月 m+1 持有』；並額外濾除動能 <= 0 的股票"
+}

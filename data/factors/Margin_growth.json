@@ -1,0 +1,16 @@
+{
+  "factor": "Margin_growth",
+  "display_name": "利潤率連兩季成長（Gross & Operating）",
+  "category": "Quality",
+  "rebalance": "Q (但月內會套 mktcap_pool 做交集)",
+  "universe": "Top200 ex-fin (每月再與 pool[m] 交集)",
+  "holding_rule": "將 gross 與 operating（你傳入的是 rev）先對齊到 Q-DEC 季別（以該季最後一筆公告代表）；判斷每季是否『連續兩季成長』（allow_equal=False 時為嚴格成長）；為避免前視，對成長判斷結果 shift(1)，代表進場用的是『上季已確定』的成長訊號；每季 q 對應一個進場月份（Q1→6月、Q2→9月、Q3→12月、Q4→次年4月），並用該進場月的『最後一個交易日』作為持有開始日；持有到下一次進場日前一日；持有期間每個月再與 pool[m] 取交集",
+  "params": {
+    "allow_equal": false,
+    "source_func": "margin_growth_signal",
+    "quarter_entry_rule": "Q1->Jun, Q2->Sep, Q3->Dec, Q4->Apr(next year)",
+    "start_day_rule": "entry month last trading day",
+    "anti_lookahead": "both_ok = (gm_ok & om_ok).shift(1)"
+  },
+  "timing_notes": "此因子是『季訊號 + 月宇宙過濾 + 日頻展開』，時間對齊最敏感；你已用 shift(1) 明確避免前視"
+}

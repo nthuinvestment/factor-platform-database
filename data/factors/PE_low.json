@@ -1,0 +1,17 @@
+{
+  "factor": "PE_low",
+  "display_name": "低本益比（PE）",
+  "category": "Value",
+  "rebalance": "M",
+  "universe": "Top200 ex-fin (由 pool 決定)",
+  "holding_rule": "以『上月 prev_m = m-1』的 PE 橫切面，在『上月的 TopN 宇宙（pool[prev_m]）』內排序；若 require_positive=True 則只保留 PE>0；取 PE 最低的 bottom_frac=30%；於『本月 m』整月等權持有",
+  "params": {
+    "bottom_frac": 0.3,
+    "require_positive": true,
+    "source_func": "pe_low_signal",
+    "universe_key_used": "pool[prev_m] (prev_m=m-1)",
+    "decision_month": "m-1",
+    "holding_month": "m"
+  },
+  "timing_notes": "pe_low_signal 明確用上月指標決定本月持有；避免前視偏誤"
+}

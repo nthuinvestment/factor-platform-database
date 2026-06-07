@@ -1,0 +1,16 @@
+{
+  "factor": "High_yield",
+  "display_name": "高殖利率",
+  "category": "Value",
+  "rebalance": "M",
+  "universe": "Top200 (由 pool 決定)",
+  "holding_rule": "以『上月 prev_m = m-1』的殖利率 DY 橫切面，在『上月的 TopN 宇宙（pool[prev_m]）』內排序；若 require_positive=True 則只保留 DY>0；取 DY 最高的 top_frac=30%；於『本月 m』整月等權持有",
+  "params": {
+    "top_frac": 0.3,
+    "require_positive": false,
+    "source_func": "dy_high_signal",
+    "decision_month": "m-1",
+    "holding_month": "m"
+  },
+  "timing_notes": "dy_high_signal 用上月 DY 決定本月持有；避免前視"
+}
