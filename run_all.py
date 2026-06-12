@@ -6,7 +6,10 @@ scripts = [
     "scripts/export_returns.py",
     "scripts/export_heatmap.py",
     "scripts/export_global_wave.py",
+    "strat.py",
 ]
+
+#
 
 for script in scripts:
     print(f"\n=== Running {script} ===")
