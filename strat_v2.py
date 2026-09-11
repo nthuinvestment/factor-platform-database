@@ -90,8 +90,8 @@ def backtest(factor_pct_dict, pct_thresholds, universe_mask=universe,
         holding_score += score
     total_score = holding_score.sum(axis=1).replace(0, np.nan)
     holding_weight = holding_score.div(total_score, axis=0).fillna(0)
-    #daily_ret = (returns * selected_daily).sum(axis=1) / n_holdings.replace(0, np.nan)
-    daily_ret = (returns * holding_weight).sum(axis=1)
+    daily_ret = (returns * selected_daily).sum(axis=1) / n_holdings.replace(0, np.nan)
+    #daily_ret = (returns * holding_weight).sum(axis=1)
     daily_ret = daily_ret.fillna(0).loc[start_date:end_date]
 
     ann_ret = (1 + daily_ret).prod() ** (252 / len(daily_ret)) - 1
